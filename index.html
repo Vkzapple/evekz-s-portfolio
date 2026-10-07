@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prof. Evekz</title>
+  <title>evekz.dev</title>
+  <meta name="description" content="evekz — student engineer building AI, IoT, and web things." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -12,12 +13,13 @@
       --yellow: #FFD600;
       --black: #0f0f0f;
       --white: #fafaf8;
+      --gray: #f0efeb;
+      --muted: #888;
       --border: 2px solid #0f0f0f;
+      --border-thin: 1px solid #e0dfd9;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--white);
       color: var(--black);
@@ -25,372 +27,188 @@
       font-size: 15px;
       line-height: 1.6;
     }
+    a { color: inherit; text-decoration: none; }
 
-    /* ── NAV ── */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
+      position: sticky; top: 0; z-index: 50;
       background: var(--yellow);
       border-bottom: var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 32px;
-      height: 52px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px; height: 52px;
     }
-
-    .nav-logo {
-      font-family: 'Space Mono', monospace;
-      font-weight: 700;
-      font-size: 15px;
-      color: var(--black);
-      text-decoration: none;
-      letter-spacing: -0.03em;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 4px;
-      list-style: none;
-    }
-
+    .nav-logo { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 15px; }
+    .nav-links { display: flex; gap: 4px; list-style: none; }
     .nav-links a {
-      display: block;
-      padding: 6px 14px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--black);
-      text-decoration: none;
-      border: var(--border);
-      background: transparent;
-      transition: background 0.1s;
+      display: block; padding: 6px 14px; font-size: 13px; font-weight: 500;
+      border: var(--border); background: transparent; transition: background 0.1s, color 0.1s;
     }
+    .nav-links a:hover, .nav-links a.active { background: var(--black); color: var(--yellow); }
 
-    .nav-links a:hover { background: var(--black); color: var(--yellow); }
+    .anchor { scroll-margin-top: 64px; }
 
-    /* ── HERO ── */
     .hero {
       border-bottom: var(--border);
-      display: grid;
-      grid-template-columns: 1fr 340px;
+      display: grid; grid-template-columns: 1fr 300px;
       min-height: 88vh;
     }
-
     .hero-left {
-      padding: 64px 48px;
-      border-right: var(--border);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      padding: 64px 48px; border-right: var(--border);
+      display: flex; flex-direction: column; justify-content: space-between;
     }
-
-    .hero-eyebrow {
-      font-family: 'Space Mono', monospace;
-      font-size: 12px;
-      color: #666;
-      margin-bottom: 24px;
-    }
-
-    h1 {
-      font-size: clamp(36px, 5.5vw, 62px);
-      font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-      margin-bottom: 28px;
-    }
-
-    h1 .accent {
-      background: var(--yellow);
-      display: inline;
-      padding: 0 4px;
-    }
-
-    .hero-desc {
-      font-size: 15px;
-      color: #444;
-      max-width: 420px;
-      line-height: 1.7;
-      margin-bottom: 40px;
-    }
-
-    .hero-btns {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
+    .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--muted); margin-bottom: 24px; }
+    h1 { font-size: clamp(34px, 5vw, 58px); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 24px; }
+    h1 .accent { background: var(--yellow); padding: 0 4px; }
+    .hero-desc { font-size: 15px; color: #444; max-width: 400px; line-height: 1.7; margin-bottom: 36px; }
+    .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
     .btn {
-      display: inline-block;
-      padding: 11px 22px;
-      font-size: 13px;
-      font-weight: 700;
-      font-family: 'Space Grotesk', sans-serif;
-      text-decoration: none;
-      border: var(--border);
-      cursor: pointer;
-      transition: all 0.1s;
-      letter-spacing: 0.01em;
+      display: inline-block; padding: 10px 20px; font-size: 13px; font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif; border: var(--border); cursor: pointer; transition: all 0.1s;
     }
-
-    .btn-fill {
-      background: var(--black);
-      color: var(--white);
-    }
-
+    .btn-fill { background: var(--black); color: var(--white); }
     .btn-fill:hover { background: #333; }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--black);
-    }
-
+    .btn-outline { background: transparent; color: var(--black); }
     .btn-outline:hover { background: var(--yellow); }
-
-    .hero-right {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .hero-stat {
-      flex: 1;
-      padding: 28px;
-      border-bottom: var(--border);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
-
+    .hero-right { display: flex; flex-direction: column; }
+    .hero-stat { flex: 1; padding: 28px; border-bottom: var(--border); display: flex; flex-direction: column; justify-content: flex-end; }
     .hero-stat:last-child { border-bottom: none; }
+    .stat-num { font-family: 'Space Mono', monospace; font-size: 40px; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+    .stat-label { font-size: 12px; color: var(--muted); }
 
-    .stat-num {
-      font-family: 'Space Mono', monospace;
-      font-size: 42px;
-      font-weight: 700;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .stat-label {
-      font-size: 12px;
-      color: #666;
-    }
-
-    /* ── SECTION BASE ── */
-    .section {
-      border-bottom: var(--border);
-    }
-
-    .section-head {
-      padding: 20px 48px;
-      border-bottom: var(--border);
+    .sec-head {
+      padding: 18px 48px; border-bottom: var(--border);
       background: var(--black);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
     }
+    .sec-head h2 { font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700; color: var(--yellow); letter-spacing: 0.05em; }
+    .sec-head span { font-family: 'Space Mono', monospace; font-size: 11px; color: #555; }
+    .section { border-bottom: var(--border); }
 
-    .section-head h2 {
-      font-family: 'Space Mono', monospace;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--yellow);
-      letter-spacing: 0.05em;
-    }
-
-    .section-head span {
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      color: #555;
-    }
-
-    /* ── EXPERIENCE ── */
-    .exp-grid {
-      display: grid;
-    }
-
-    .exp-item {
-      display: grid;
-      grid-template-columns: 160px 1fr;
-      border-bottom: 1px solid #e5e5e0;
-    }
-
+    .exp-item { display: grid; grid-template-columns: 170px 1fr; border-bottom: var(--border-thin); }
     .exp-item:last-child { border-bottom: none; }
+    .exp-period { padding: 22px 28px; border-right: var(--border); font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); line-height: 1.5; }
+    .exp-content { padding: 22px 32px; }
+    .exp-role { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+    .exp-place { font-size: 12px; color: #666; }
 
-    .exp-period {
-      padding: 24px 28px;
-      border-right: var(--border);
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      color: #888;
-      line-height: 1.5;
-    }
-
-    .exp-content {
-      padding: 24px 32px;
-    }
-
-    .exp-role {
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 3px;
-      color: var(--black);
-    }
-
-    .exp-place {
-      font-size: 12px;
-      color: #666;
-    }
-
-    /* ── AWARDS ── */
-    .awards-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .award-item {
-      padding: 22px 32px;
-      border-right: 1px solid #e5e5e0;
-      border-bottom: 1px solid #e5e5e0;
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-
+    .awards-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .award-item { padding: 20px 28px; border-right: var(--border-thin); border-bottom: var(--border-thin); display: flex; gap: 14px; align-items: flex-start; }
     .award-item:nth-child(2n) { border-right: none; }
-
-    .award-badge {
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 3px 8px;
-      border: var(--border);
-      white-space: nowrap;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
+    .award-badge { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; padding: 3px 8px; border: var(--border); white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
     .award-badge.gold { background: var(--yellow); }
-    .award-badge.silver { background: #e0e0e0; }
+    .award-badge.silver { background: #ddd; }
     .award-badge.bronze { background: #e8c89a; }
     .award-badge.other { background: transparent; }
+    .award-title { font-size: 13px; font-weight: 500; line-height: 1.4; margin-bottom: 3px; }
+    .award-meta { font-size: 11px; color: var(--muted); font-family: 'Space Mono', monospace; }
 
-    .award-title {
-      font-size: 13px;
-      font-weight: 500;
-      line-height: 1.4;
-      margin-bottom: 3px;
+    .filter-bar { padding: 16px 48px; border-bottom: var(--border-thin); display: flex; gap: 6px; flex-wrap: wrap; background: var(--gray); }
+    .filter-btn {
+      font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700;
+      padding: 5px 12px; border: var(--border); background: transparent; cursor: pointer; transition: all 0.1s;
     }
+    .filter-btn:hover, .filter-btn.active { background: var(--black); color: var(--yellow); }
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .proj-card { border-right: var(--border-thin); border-bottom: var(--border-thin); display: flex; flex-direction: column; transition: background 0.1s; }
+    .proj-card:nth-child(3n) { border-right: none; }
+    .proj-card:hover { background: var(--gray); }
+    .proj-card.hidden { display: none; }
+    .proj-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-bottom: var(--border-thin); display: block; background: #e5e5e0; }
+    .proj-body { padding: 20px 22px; flex: 1; display: flex; flex-direction: column; }
+    .proj-cat { font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 6px; }
+    .proj-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; line-height: 1.3; }
+    .proj-desc { font-size: 12px; color: #555; line-height: 1.6; margin-bottom: 12px; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .proj-stack { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 14px; }
+    .proj-stack span { font-family: 'Space Mono', monospace; font-size: 10px; padding: 2px 6px; border: 1px solid #ccc; }
+    .proj-links { display: flex; gap: 6px; margin-top: auto; }
+    .proj-link { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; padding: 5px 10px; border: var(--border); transition: all 0.1s; }
+    .proj-link:hover { background: var(--yellow); }
+    .proj-featured { font-size: 11px; color: #666; border-left: 3px solid var(--yellow); padding-left: 8px; margin-bottom: 10px; line-height: 1.4; }
 
-    .award-meta {
-      font-size: 11px;
-      color: #888;
-      font-family: 'Space Mono', monospace;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--black);
-      color: var(--white);
-      padding: 32px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    footer p {
-      font-family: 'Space Mono', monospace;
-      font-size: 12px;
-      color: #555;
-    }
-
+    footer { background: var(--black); color: var(--white); padding: 28px 48px; display: flex; align-items: center; justify-content: space-between; }
+    footer p { font-family: 'Space Mono', monospace; font-size: 12px; color: #555; }
     footer p strong { color: var(--yellow); }
-
-    .footer-links {
-      display: flex;
-      gap: 6px;
-    }
-
-    .footer-links a {
-      font-size: 12px;
-      font-family: 'Space Mono', monospace;
-      color: #555;
-      text-decoration: none;
-      border: 1px solid #333;
-      padding: 5px 10px;
-      transition: all 0.1s;
-    }
-
+    .footer-links { display: flex; gap: 6px; }
+    .footer-links a { font-size: 12px; font-family: 'Space Mono', monospace; color: #555; border: 1px solid #333; padding: 5px 10px; transition: all 0.1s; }
     .footer-links a:hover { border-color: var(--yellow); color: var(--yellow); }
-
   </style>
 </head>
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">evekz.dev</a>
+  <a href="#" class="nav-logo">Evekz.dev</a>
   <ul class="nav-links">
-    <li><a href="projects.html">projects</a></li>
-    <li><a href="writings.html">writings</a></li>
-    <li><a href="about.html">about</a></li>
-    <li><a href="./Resume_Automation_English.pdf" target="_blank">resume</a></li>
+    <li><a href="#experience">experience</a></li>
+    <li><a href="#projects">projects</a></li>
   </ul>
 </nav>
 
-<main>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-left">
-      <div></div>
-        <h1>Building things<br>with <span class="accent">AI & IoT</span><br>since 2022.</h1>
-        <p class="hero-desc">
-          Student engineer. I've won robotics competitions, built fullstack apps, and somehow convinced Samsung to let me learn AI twice.
-        </p>
-        <div class="hero-btns">
-          <a href="projects.html" class="btn btn-fill">See my projects</a>
-          <a href="mailto:evellykhnz@gmail.com" class="btn btn-outline">Say hi</a>
-        </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div>
+      <p class="hero-eyebrow">Jakarta · Software Engineering</p>
+      <h1>Building things<br>with <span class="accent">AI & IoT</span><br>since 2022.</h1>
+      <p class="hero-desc"> Software Engineering student who builds things that actually work, from IoT sensors to ML models to the web layer that ties it all together. I like it when software talks to hardware, and when hardware talks back.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-fill">See my projects</a>
+        <a href="mailto:evellykhnz@gmail.com" class="btn btn-outline">Say hi</a>
       </div>
     </div>
-    <div class="hero-right">
-      <div class="hero-stat">
-        <div class="stat-num">12×</div>
-        <div class="stat-label">competition wins & placements</div>
-      </div>
-      <div class="hero-stat">
-        <div class="stat-num">4+</div>
-        <div class="stat-label">programs & cohorts</div>
-      </div>
-      <div class="hero-stat">
-        <div class="stat-num">2×</div>
-        <div class="stat-label">Samsung Innovation Campus Indonesia</div>
-      </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat">
+      <div class="stat-num">40x</div>
+      <div class="stat-label">competition wins & placements</div>
     </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section class="section" id="experience">
-    <div class="section-head">
-      <h2>experience</h2>
-      <span>2022 — now</span>
+    <div class="hero-stat">
+      <div class="stat-num">70+</div>
+      <div class="stat-label">national & international competitions entered</div>
     </div>
-    <div class="exp-grid" id="exp-list"></div>
-  </section>
-
-  <!-- AWARDS -->
-  <section class="section" id="awards">
-    <div class="section-head">
-      <h2>awards</h2>
-      <span>12 entries</span>
+    <div class="hero-stat">
+      <div class="stat-num">100+</div>
+      <div class="stat-label">projects shipped</div>
     </div>
-    <div class="awards-grid" id="awards-list"></div>
-  </section>
+  </div>
+</section>
 
-</main>
+<!-- EXPERIENCE -->
+<section class="section anchor" id="experience">
+  <div class="sec-head">
+    <h2>experience</h2>
+    <span>2022 — now</span>
+  </div>
+  <div id="exp-list"></div>
+</section>
+
+<!-- AWARDS -->
+<section class="section anchor" id="awards">
+  <div class="sec-head">
+    <h2>awards</h2>
+    <span>showing 12 of 40</span>
+  </div>
+  <div class="awards-grid" id="awards-list"></div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section anchor" id="projects">
+  <div class="sec-head">
+    <h2>projects</h2>
+    <span id="proj-count">15 projects</span>
+  </div>
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="AI">AI</button>
+    <button class="filter-btn" data-filter="IoT">IoT</button>
+    <button class="filter-btn" data-filter="Web">Web</button>
+    <button class="filter-btn" data-filter="UI/UX">UI/UX</button>
+    <button class="filter-btn" data-filter="Mobile">Mobile</button>
+    <button class="filter-btn" data-filter="Game">Game</button>
+  </div>
+  <div class="projects-grid" id="projects-grid"></div>
+</section>
 
 <footer>
-  <p>made by <strong>evekz</strong><p>
+  <p>made by <strong>evekz</strong></p>
   <div class="footer-links">
     <a href="https://github.com/Vkzapple" target="_blank">github</a>
   </div>
