@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prof. Evekz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --yellow: #FFD600;
+      --black: #0f0f0f;
+      --white: #fafaf8;
+      --border: 2px solid #0f0f0f;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--yellow);
+      border-bottom: var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      height: 52px;
+    }
+
+    .nav-logo {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+      border: var(--border);
+      background: transparent;
+      transition: background 0.1s;
+    }
+
+    .nav-links a:hover { background: var(--black); color: var(--yellow); }
+
+    /* ── HERO ── */
+    .hero {
+      border-bottom: var(--border);
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      min-height: 88vh;
+    }
+
+    .hero-left {
+      padding: 64px 48px;
+      border-right: var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(36px, 5.5vw, 62px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+
+    h1 .accent {
+      background: var(--yellow);
+      display: inline;
+      padding: 0 4px;
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      color: #444;
+      max-width: 420px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 11px 22px;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+      text-decoration: none;
+      border: var(--border);
+      cursor: pointer;
+      transition: all 0.1s;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-fill {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .btn-fill:hover { background: #333; }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--black);
+    }
+
+    .btn-outline:hover { background: var(--yellow); }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-stat {
+      flex: 1;
+      padding: 28px;
+      border-bottom: var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .hero-stat:last-child { border-bottom: none; }
+
+    .stat-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* ── SECTION BASE ── */
+    .section {
+      border-bottom: var(--border);
+    }
+
+    .section-head {
+      padding: 20px 48px;
+      border-bottom: var(--border);
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section-head h2 {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--yellow);
+      letter-spacing: 0.05em;
+    }
+
+    .section-head span {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: #555;
+    }
+
+    /* ── EXPERIENCE ── */
+    .exp-grid {
+      display: grid;
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      border-bottom: 1px solid #e5e5e0;
+    }
+
+    .exp-item:last-child { border-bottom: none; }
+
+    .exp-period {
+      padding: 24px 28px;
+      border-right: var(--border);
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: #888;
+      line-height: 1.5;
+    }
+
+    .exp-content {
+      padding: 24px 32px;
+    }
+
+    .exp-role {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 3px;
+      color: var(--black);
+    }
+
+    .exp-place {
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* ── AWARDS ── */
+    .awards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .award-item {
+      padding: 22px 32px;
+      border-right: 1px solid #e5e5e0;
+      border-bottom: 1px solid #e5e5e0;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .award-item:nth-child(2n) { border-right: none; }
+
+    .award-badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border: var(--border);
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .award-badge.gold { background: var(--yellow); }
+    .award-badge.silver { background: #e0e0e0; }
+    .award-badge.bronze { background: #e8c89a; }
+    .award-badge.other { background: transparent; }
+
+    .award-title {
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.4;
+      margin-bottom: 3px;
+    }
+
+    .award-meta {
+      font-size: 11px;
+      color: #888;
+      font-family: 'Space Mono', monospace;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 32px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    footer p {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: #555;
+    }
+
+    footer p strong { color: var(--yellow); }
+
+    .footer-links {
+      display: flex;
+      gap: 6px;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      font-family: 'Space Mono', monospace;
+      color: #555;
+      text-decoration: none;
+      border: 1px solid #333;
+      padding: 5px 10px;
+      transition: all 0.1s;
+    }
+
+    .footer-links a:hover { border-color: var(--yellow); color: var(--yellow); }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">evekz.dev</a>
+  <ul class="nav-links">
+    <li><a href="projects.html">projects</a></li>
+    <li><a href="writings.html">writings</a></li>
+    <li><a href="about.html">about</a></li>
+    <li><a href="./Resume_Automation_English.pdf" target="_blank">resume</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div></div>
+        <h1>Building things<br>with <span class="accent">AI & IoT</span><br>since 2022.</h1>
+        <p class="hero-desc">
+          Student engineer. I've won robotics competitions, built fullstack apps, and somehow convinced Samsung to let me learn AI twice.
+        </p>
+        <div class="hero-btns">
+          <a href="projects.html" class="btn btn-fill">See my projects</a>
+          <a href="mailto:evellykhnz@gmail.com" class="btn btn-outline">Say hi</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stat">
+        <div class="stat-num">12×</div>
+        <div class="stat-label">competition wins & placements</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">programs & cohorts</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">2×</div>
+        <div class="stat-label">Samsung Innovation Campus Indonesia</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="section-head">
+      <h2>experience</h2>
+      <span>2022 — now</span>
+    </div>
+    <div class="exp-grid" id="exp-list"></div>
+  </section>
+
+  <!-- AWARDS -->
+  <section class="section" id="awards">
+    <div class="section-head">
+      <h2>awards</h2>
+      <span>12 entries</span>
+    </div>
+    <div class="awards-grid" id="awards-list"></div>
+  </section>
+
+</main>
+
+<footer>
+  <p>made by <strong>evekz</strong><p>
+  <div class="footer-links">
+    <a href="https://github.com/Vkzapple" target="_blank">github</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
